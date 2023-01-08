@@ -1,0 +1,31 @@
+﻿@page
+@model Proiect.Pages.Comenzi.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Comanda</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comanda.StatusComanda)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comanda.StatusComanda)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comanda.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comanda.Total)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Comanda?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
