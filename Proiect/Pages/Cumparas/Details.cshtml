@@ -1,0 +1,37 @@
+﻿@page
+@model Proiect.Pages.Cumparas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cumpara</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cumpara.Client)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cumpara.Client.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cumpara.CoffeeShop)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cumpara.CoffeeShop.ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cumpara.DataCumparat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cumpara.DataCumparat)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Cumpara?.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

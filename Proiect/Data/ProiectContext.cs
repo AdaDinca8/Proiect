@@ -19,5 +19,9 @@ namespace Proiect.Data
         public DbSet<Proiect.Models.Comanda> Comanda { get; set; }
 
         public DbSet<Proiect.Models.Categorie> Categorie { get; set; }
+
+        public DbSet<Proiect.Models.Client> Client { get; set; }
+
+        public DbSet<Proiect.Models.Cumpara> Cumpara { get; set; }
     }
 }

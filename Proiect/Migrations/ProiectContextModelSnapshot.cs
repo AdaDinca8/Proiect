@@ -39,6 +39,35 @@ namespace Proiect.Migrations
                     b.ToTable("Categorie");
                 });
 
+            modelBuilder.Entity("Proiect.Models.Client", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Adresa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nume")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prenume")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Client");
+                });
+
             modelBuilder.Entity("Proiect.Models.CoffeeShop", b =>
                 {
                     b.Property<int>("ID")
@@ -111,6 +140,32 @@ namespace Proiect.Migrations
                     b.ToTable("Comanda");
                 });
 
+            modelBuilder.Entity("Proiect.Models.Cumpara", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int?>("ClientID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CoffeeShopID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataCumparat")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ClientID");
+
+                    b.HasIndex("CoffeeShopID");
+
+                    b.ToTable("Cumpara");
+                });
+
             modelBuilder.Entity("Proiect.Models.CoffeeShop", b =>
                 {
                     b.HasOne("Proiect.Models.Comanda", "Comanda")
@@ -139,9 +194,29 @@ namespace Proiect.Migrations
                     b.Navigation("CoffeeShop");
                 });
 
+            modelBuilder.Entity("Proiect.Models.Cumpara", b =>
+                {
+                    b.HasOne("Proiect.Models.Client", "Client")
+                        .WithMany("Cumparas")
+                        .HasForeignKey("ClientID");
+
+                    b.HasOne("Proiect.Models.CoffeeShop", "CoffeeShop")
+                        .WithMany()
+                        .HasForeignKey("CoffeeShopID");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("CoffeeShop");
+                });
+
             modelBuilder.Entity("Proiect.Models.Categorie", b =>
                 {
                     b.Navigation("CoffeeShopCategorie");
+                });
+
+            modelBuilder.Entity("Proiect.Models.Client", b =>
+                {
+                    b.Navigation("Cumparas");
                 });
 
             modelBuilder.Entity("Proiect.Models.CoffeeShop", b =>
