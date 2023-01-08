@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +14,7 @@ using Proiect.Models;
 
 namespace Proiect.Pages.CoffeeShops
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : CoffeeShopCategoriePageModel
     {
         private readonly Proiect.Data.ProiectContext _context;

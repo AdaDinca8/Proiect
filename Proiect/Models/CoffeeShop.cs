@@ -15,6 +15,7 @@ namespace Proiect.Models
         public string Brand { get; set; }
 
         [Column(TypeName = "decimal(6, 2)")]
+        [Range(0.01, 500)]
         public decimal Pret { get; set; }
         public int? ComandaID { get; set; }
         [Display(Name = " Status")]
