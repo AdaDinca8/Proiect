@@ -1,4 +1,4 @@
-﻿@page
+﻿@page  "{id:int?}"
 @model Proiect.Pages.Comenzi.IndexModel
 
 @{
@@ -23,8 +23,14 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Comanda) {
-        <tr>
+@foreach (var item in Model.ComandaData.Comenzi) 
+            {
+                string selectedRow = "";
+                if (item.ID == Model.ComandaID)
+                {
+                    selectedRow = "table-success";
+                }
+                <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.StatusComanda)
             </td>
@@ -32,6 +38,7 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
+                <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
@@ -40,3 +47,4 @@
 }
     </tbody>
 </table>
+
