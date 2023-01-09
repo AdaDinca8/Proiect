@@ -53,6 +53,8 @@
            {
                selectedRow = "table-success";
            }
+            
+            
         <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Coffee)
@@ -80,6 +82,8 @@
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
+    
 }
+
     </tbody>
 </table>
